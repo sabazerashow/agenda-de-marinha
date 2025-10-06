@@ -1,0 +1,125 @@
+<!-- public/index.html (VERSÃO FINAL, COMPLETA E CORRIGIDA) -->
+<!DOCTYPE html>
+<html lang="pt-BR" data-bs-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minhas Mensagens</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="theme.js"></script>
+</head>
+<body>
+    <nav class="navbar navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/">Minha Plataforma Pessoal</a>
+            <div>
+                <button class="btn btn-outline-secondary" id="theme-toggler" type="button" style="margin-right: 10px;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-circle-half" viewBox="0 0 16 16"><path d="M8 15A7 7 0 1 0 8 1v14zm0 1A8 8 0 1 1 8 0a8 8 0 0 1 0 16z"/></svg>
+                </button>
+                <a href="/compromissos.html" class="btn btn-outline-light">Compromissos</a>
+                <a href="/agenda.html" class="btn btn-outline-light">Ver Agenda</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container-fluid bg-light p-3 border-bottom mb-4">
+        <div class="container">
+            <h4>Filtros e Buscas</h4>
+            <form id="form-filtros" class="row g-3 align-items-end">
+                <div class="col-md-4"><label class="form-label">Conteúdo da Mensagem</label><input type="text" class="form-control" id="filtro-busca"></div>
+                <div class="col-md-2"><label class="form-label">Data Início</label><input type="date" class="form-control" id="filtro-data-inicio"></div>
+                <div class="col-md-2"><label class="form-label">Data Fim</label><input type="date" class="form-control" id="filtro-data-fim"></div>
+                <div class="col-md-2"><label class="form-label">Data-Hora (XXXXXX)</label><input type="text" class="form-control" id="filtro-data-hora" placeholder="Ex: 242300"></div>
+                <div class="col-md-2"><label class="form-label">Tema</label><select id="filtro-tema" class="form-select"><option value="">Todos</option></select></div>
+                <div class="col-md-3"><label class="form-label">Assunto</label><select id="filtro-assunto" class="form-select" disabled><option value="">Selecione um tema</option></select></div>
+                <div class="col-md-3"><label class="form-label">Classificar por</label><select id="filtro-classificar" class="form-select"><option value="cronologica">Ordem Cronológica</option><option value="assunto_asc">Ordem Alfabética (Assunto)</option></select></div>
+                <div class="col-md-2"><button type="submit" class="btn btn-primary w-100">Pesquisar</button></div>
+                <div class="col-md-1"><button type="reset" class="btn btn-secondary w-100">Limpar</button></div>
+            </form>
+        </div>
+    </div>
+
+    <div class="container mt-4">
+        <section id="mensagens">
+            <h2>Minhas Mensagens</h2>
+            
+            <div class="row mb-4">
+                <div class="col-md-6 mb-3">
+                    <div class="card bg-light p-3 h-100">
+                        <form id="form-tema">
+                            <label for="nome-tema" class="form-label"><strong>Novo Tema</strong></label>
+                            <div class="input-group">
+                                <input type="text" id="nome-tema" class="form-control" placeholder="Ex: Trabalho" required>
+                                <button class="btn btn-secondary" type="submit">Criar Tema</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <div class="card bg-light p-3 h-100">
+                        <form id="form-assunto">
+                            <label for="select-tema-para-assunto" class="form-label"><strong>Novo Assunto</strong></label>
+                            <select id="select-tema-para-assunto" class="form-select mb-2" required>
+                                <option value="">Selecione um tema...</option>
+                            </select>
+                            <div class="input-group">
+                                <input type="text" id="nome-assunto" class="form-control" placeholder="Ex: Projeto Alpha" required>
+                                <button class="btn btn-secondary" type="submit">Criar Assunto</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card p-3 mb-4">
+                 <h4>Nova Mensagem</h4>
+                 <form id="form-mensagem">
+                    <div class="row">
+                        <div class="col-md-4 mb-3"><label class="form-label">Data da Mensagem</label><input type="date" id="data-mensagem" class="form-control" required></div>
+                        <div class="col-md-4 mb-3"><label class="form-label">Data-Hora (formato Marinha)</label><div class="input-group"><input type="text" id="data-hora-texto" class="form-control" placeholder="242300" maxlength="6"><span class="input-group-text">Z</span></div></div>
+                        <div class="col-md-4 mb-3"><label class="form-label">Origem</label><input type="text" id="origem-mensagem" class="form-control"></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4 mb-3"><label class="form-label">Para</label><input type="text" id="para-mensagem" class="form-control"></div>
+                        <div class="col-md-4 mb-3"><label class="form-label">Tema</label><select id="select-tema" class="form-select" required></select></div>
+                        <div class="col-md-4 mb-3"><label class="form-label">Assunto</label><select id="select-assunto" class="form-select" required disabled></select></div>
+                    </div>
+                    <div class="mb-3"><label class="form-label">Mensagem</label><textarea id="conteudo-mensagem" class="form-control" rows="4" required></textarea></div>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="reservada-mensagem">
+                            <label class="form-check-label" for="reservada-mensagem">Mensagem Reservada</label>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Salvar Mensagem</button>
+                    </div>
+                 </form>
+            </div>
+            <h4>Registros</h4>
+            <div id="lista-mensagens"></div>
+        </section>
+    </div>
+    
+    <footer class="footer mt-auto py-3 bg-dark text-white">
+        <div class="container">Criado por CC (FN) Sabá</div>
+    </footer>
+
+    <div class="modal fade" id="modal-editar-mensagem" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header"><h5 class="modal-title">Editar Mensagem</h5><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div>
+                <div class="modal-body">
+                    <form id="form-editar-mensagem">
+                        <input type="hidden" id="edit-mensagem-id">
+                        <div class="mb-3"><label for="edit-conteudo-mensagem" class="form-label">Conteúdo</label><textarea class="form-control" id="edit-conteudo-mensagem" rows="5" required></textarea></div>
+                        <button type="submit" class="btn btn-primary">Salvar Alterações</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,60 @@
+/* public/style.css (VERSÃO FINAL COM MELHORIAS DE LAYOUT) */
+
+/* Estilos de Transição e Base */
+body { 
+    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out; 
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+.container, .container-fluid {
+    flex: 1;
+}
+section, .card { 
+    transition: background-color 0.3s ease-in-out; 
+}
+.navbar-brand:hover { 
+    color: #fff; 
+}
+
+.footer {
+    padding: 1rem 0;
+    font-size: 0.9em;
+    text-align: center;
+    width: 100%;
+}
+
+/* Estilos para o Calendário */
+#calendar {
+    max-width: 1100px;
+    margin: 20px auto;
+    padding: 1rem;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    transition: background-color 0.3s ease-in-out;
+}
+
+/* --- ESTILOS PARA O TEMA ESCURO --- */
+[data-bs-theme="dark"] {
+    body { background-color: #1a1a1a; }
+    section, .card, #calendar { background-color: #242424; border: 1px solid #383838; }
+    .list-group-item { background-color: #2a2a2a; border-color: #383838; }
+    .form-control, .form-select { background-color: #2c2c2c; border-color: #555; color: #f1f1f1; }
+    .form-control:focus, .form-select:focus { background-color: #2c2c2c; border-color: #86b7fe; color: #f1f1f1; box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25); }
+    .form-control::placeholder { color: #888; }
+    body, .form-label, h1, h2, h3, h4, h5, p, .modal-title { color: #e3e3e3; }
+    .text-muted { color: #aaa !important; }
+    .card-header, .modal-header { background-color: #2a2a2a; border-bottom-color: #383838; }
+    .btn-close { filter: invert(1) grayscale(100%) brightness(200%); }
+    .modal-content { background-color: #242424; }
+    .input-group-text { background-color: #333; border-color: #555; color: #e3e3e3; }
+
+    /* Estilos específicos para o Calendário no modo escuro */
+    .fc-daygrid-day-number, .fc-col-header-cell-cushion, .fc-toolbar-title { color: #e3e3e3; }
+    .fc-day-today { background: rgba(86, 61, 124, 0.3) !important; }
+    .fc a { color: #e3e3e3; }
+    .fc-button-primary { color: #fff; background-color: #3a3f44 !important; border-color: #6c757d !important; }
+    .fc-button-primary:hover, .fc-button-primary:active, .fc-button-primary:focus { color: #fff; background-color: #495057 !important; }
+    .fc-event { border-color: #0d6efd !important; }
+}
